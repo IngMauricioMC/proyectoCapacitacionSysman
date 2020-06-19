@@ -1,0 +1,25 @@
+<ng-container>
+    <h2>MIS TRABAJOS</h2>
+    <br>
+    <div class="row" *ngIf="estadoForm">
+        <table id="tablaTrabajos" class="table table-striped col-12">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Trabajo</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let trabajo of trabajos">
+                    <td scope="row">{{ trabajo.nombre }}</td>
+                    <td>{{ trabajo.descripcion }}</td>
+                    <td>{{ trabajo.estado }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div *ngIf="!estadoForm">
+        <img class="imgPag" src="./assets/esperando.jpg" />
+    </div>
+</ng-container>

@@ -1,0 +1,47 @@
+<ng-container>
+  <form #groupForm="ngForm">
+    <div class="form-group">
+      <label>Nombre Completo:</label>
+      <input type="text" class="form-control" name="nombre" placeholder="Nombre Completo"[(ngModel)]="usuarioForm.nombre" #nombre="ngModel">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Teléfono:</label>
+        <input type="text" class="form-control" name="telefono" placeholder="Teléfono" [(ngModel)]="usuarioForm.telefono" #telefono="ngModel">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Email:</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <div class="input-group-text">@</div>
+          </div>
+          <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="usuarioForm.email" #email="ngModel">
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Dirección:</label>
+        <input type="text" class="form-control" name="direccion" placeholder="Dirección" [(ngModel)]="usuarioForm.direccion" #direccion="ngModel">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Ciudad:</label>
+        <select class="custom-select" class="form-control" name="id_ciudad" [(ngModel)]="usuarioForm.id_ciudad" #id_ciudad="ngModel">
+          <option *ngFor="let ciudadLista of ciudades" value="{{ ciudadLista.id }}"> {{ ciudadLista.nombre }} </option>
+        </select>
+        <!-- <input type="text" class="form-control" name="ciudad" placeholder="Ciudad" [(ngModel)]="usuarioForm.nombre_ciudad" #nombre_ciudad="ngModel"> -->
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label>Nombre de Usuario:</label>
+        <input type="text" class="form-control" name="username" placeholder="Nombre de Usuario" [(ngModel)]="usuarioForm.nomUsuario" #nombreUsuario="ngModel">
+      </div>
+      <div class="form-group col-md-6">
+        <label>Contraseña:</label>
+        <input type="password" class="form-control" name="password" placeholder="Contraseña" [(ngModel)]="usuarioForm.contrasena" #contrasena="ngModel">
+      </div>
+    </div>
+    <button class="btn btn-success" type="button" name="button" (click)="crear()">REGISTRARSE</button>
+  </form>
+</ng-container>

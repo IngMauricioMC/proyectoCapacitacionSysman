@@ -1,0 +1,17 @@
+<ng-container>
+  <div class="serviciosMacla container">
+    <div class="row">
+      <div class="servicios col-sm" *ngFor="let serv of servicios">
+        <div class="card text-center">
+          <div class="card-header">
+            <h3>{{ serv.nombre }}</h3>
+          </div>
+          <img class="card-img-top" src="{{ serv.imagen }}" alt="">
+          <div class="card-body">
+            <p class="card-text">{{ serv.descripcion }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

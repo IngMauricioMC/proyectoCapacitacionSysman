@@ -1,0 +1,19 @@
+<ng-container>
+    <form (ngSubmit)="nuevoTrabajo()" #groupForm="ngForm">
+        <div class="form-group">
+            <label>Cliente: </label>
+            <select class="custom-select" class="form-control" name="id_usuario" [(ngModel)]="trabajoForm.id_usuario" #id_usuario="ngModel">
+                <option *ngFor="let cliente of clientes" value="{{ cliente.id }}"> {{ cliente.nombre }} </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Nombre Trabajo:</label>
+            <input type="text" class="form-control" name="nombre" placeholder="Nombre Trabajo"[(ngModel)]="trabajoForm.nombre" #nombre="ngModel">
+        </div>
+        <div class="form-group">
+            <label>Descripcion: </label>
+            <textarea class="form-control" name="descripcion" id="descripcion" rows="10" placeholder="Descripción del trabajo a realizar..." [(ngModel)]="trabajoForm.descripcion" #descripcion="ngModel"></textarea>
+        </div>
+        <button class="btn btn-success" type="submit" name="button">REGISTRAR</button>
+    </form>
+</ng-container>

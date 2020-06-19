@@ -1,0 +1,72 @@
+<section>
+  <!-- <image src=""> -->
+  <div class="contenido">
+    <div class="header" style="text-align: center">
+      <h1>MODISTERÍA MACLA</h1>
+    </div>
+    <div class="navbar navbar-light bg-light my-2 my-lg-0">
+      <button type="button" *ngIf="!login.logged" (click)="loginFormulario()">Iniciar Sesión</button>
+      <a href="" *ngIf="login.logged" (click)="cerrarSesion()">Cerrar Sesión</a>
+    </div>
+    <div class="main">
+      <div class="list-group" id="list-tab" role="tablist">
+        <a class="list-group-item list-group-item-action" id="list-nosotros-list" routerLinkActive="active" routerLink="nosotros">Nosotros</a>
+        <a class="list-group-item list-group-item-action" id="list-servicios-list" routerLinkActive="active" routerLink="servicios">Nuestros Servicios</a>
+        <a class="list-group-item list-group-item-action" id="list-registro-list" routerLinkActive="active" *ngIf="usuarioForm.nomUsuario == 'admin'" routerLink="registroTrabajos" >Registro Trabajos Macla</a>
+        <a class="list-group-item list-group-item-action" id="list-trabajos-list" routerLinkActive="active" *ngIf="login.logged && (usuarioForm.nomUsuario != 'admin')" routerLink="mistrabajos/{{ login.usuario }}">Mis Trabajos</a>
+        <a class="list-group-item list-group-item-action" id="list-contacto-list" routerLinkActive="active" routerLink="contacto">Contáctenos</a>
+      </div>
+      <div class="content">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+    <footer>
+      <h1>@2020</h1>
+      <p>Luis Mauricio Mosquera Cifuentes</p>
+    </footer>
+  </div>
+</section>
+
+<div class="loginForm" *ngIf="formLogin">
+  <br>
+  <div class="formulario">
+    <ng-template [ngIf]="!login.logged" style="text-align: center;">
+      <br>
+      <h2 class="font-weight-bold">INICIO DE SESIÓN</h2>
+      <br>
+      <form #groupForm="ngForm">
+        <img class="rounded icon" src="./assets/login.png"/>
+        <br>
+        <div class="form-group col-md-8" id="formularioLoginUsuario">
+          <label>Usuario:</label>
+          <input type="text" id="nombreUsuario" name="nombreUsuario" class="form-control" [(ngModel)]="usuarioForm.nomUsuario" #nombreUsuario="ngModel">
+        </div>
+        <div class="form-group col-md-8" id="formularioLoginUsuario">
+          <label>Contraseña:</label>
+          <input type="password" id="contrasena" name="contrasena" class="form-control" [(ngModel)]="usuarioForm.contrasena" #contrasena="ngModel">
+        </div>
+        <br>
+        <div class="row">
+          <div class="col-md-6">
+            <button type="button" (click)="cerrarLogin()" class="btn btn-danger">CERRAR</button>
+          </div>
+          <div class="col-6">
+            <button type="button" (click)="validarDatos()" class="btn btn-success">ENTRAR</button>
+          </div>
+        </div>
+      </form>
+      <br>
+      <button type="button" (click)="registro()" class="btn btn-outline-info">Registrarse</button>
+      <br>
+      <br>
+    </ng-template>
+  </div>
+</div>
+
+
+
+<script type="text/javascript">
+  $(function () {
+    $('#myList a:last-child').tab('show')
+  })
+</script>
